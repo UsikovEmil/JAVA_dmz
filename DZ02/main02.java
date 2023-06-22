@@ -1,32 +1,26 @@
 package DZ02;
+import java.util.*;
+public class main02 { 
 
-import org.json.simple.JSONObject;
-public class main02 {
-      public static void main(String[] args) {
 
-        String filters = "{\"name\":\"Ivanov\", \"country\":\"Russia\", \"city\":\"Moscow\", \"age\":null}";
-        JSONObject filterData = new JSONObject(filters);
-        StringBuilder whereClause = new StringBuilder("select * from students where ");
+    public static void main(String[] args) {
+        Map<String, String> filt = new HashMap<>();
+        filt.put("name", "Ivanov");
+        filt.put("country", "Russia");
+        filt.put("city", "Moscow");
+        filt.put("age", null);
 
-        if (!filterData.isNull("name")) {
-            whereClause.append("name = '").append(filterData.getString("name")).append("' AND ");
-        }
-        if (!filterData.isNull("country")) {
-            whereClause.append("country = '").append(filterData.getString("country")).append("' AND ");
-        }
-        if (!filterData.isNull("city")) {
-            whereClause.append("city = '").append(filterData.getString("city")).append("' AND ");
-        }
-        if (!filterData.isNull("age")) {
-            whereClause.append("age = ").append(filterData.getInt("age")).append(" AND ");
-        }
-
-        // Удаление последнего "AND" из строки
-        if (whereClause.toString().endsWith(" AND ")) {
-            whereClause.setLength(whereClause.length() - 5);
+        StringBuilder where = new StringBuilder();
+        for (Map.Entry<String, String> entry : filt.entrySet()) {
+            if (entry.getValue() != null) {
+                if (where.length() > 0) {
+                    where.append(" AND ");
+                }
+                where.append(entry.getKey()).append(" = '").append(entry.getValue()).append("'");
+            }
         }
 
-        System.out.println(whereClause.toString());
-
+        String sql = "SELECT * FROM students WHERE " + where.toString();
+        System.out.println(sql);
     }
-}  
+}
