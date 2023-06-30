@@ -1,12 +1,17 @@
 package ALGORITMI;
 
+public class main03 {
+    public static void main(String[] args) {
+        revers<Integer> list = new revers<>(1, 2, 3, 4);
+        list.reverse();
+    }
+}
 
-
-public class ReversingLinkedList<T> {
+public class revers<T> {
     private Node head;
 
     @SafeVarargs
-    public ReversingLinkedList(T... values) {
+    public revers(T... values) {
         Node previous = null;
         for (T value : values) {
             Node node = new Node();
@@ -20,7 +25,7 @@ public class ReversingLinkedList<T> {
         }
     }
 
-    public ReversingLinkedList<T> reverse() {
+    public revers<T> reverse() {
         Node node = head;
         Node previous = null;
         while (node != null) {
@@ -52,6 +57,14 @@ public class ReversingLinkedList<T> {
         public void setValue(T value) {
             this.value = value;
         }
+    }
+
+    public Node getHead() {
+        return head;
+    }
+
+    public void setHead(Node head) {
+        this.head = head;
     }
 }
 
