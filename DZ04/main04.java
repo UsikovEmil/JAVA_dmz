@@ -42,10 +42,19 @@ public class main04 {
             users.add(new User(fName, lName, mName, age, pol));
         }
 
+        // Создание массива индексов
+        Integer[] indices = new Integer[users.size()];
+        for (int i = 0; i < indices.length; i++) {
+            indices[i] = i;
+        }
+
+        // Сортировка массива индексов на основе значений возраста в массиве пользователей
+        Arrays.sort(indices, Comparator.comparingInt(i -> users.get(i).age));
+
         System.out.println("Список пользователей (отсортированный по возрасту):");
-        users.sort(Comparator.comparingInt(user -> user.age));
-        for (User user : users) {
-            System.out.println(user);
+        for (int index : indices) {
+            System.out.println(users.get(index));
         }
     }
 }
+
