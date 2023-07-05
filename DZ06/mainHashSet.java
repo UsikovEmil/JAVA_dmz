@@ -2,10 +2,10 @@ package DZ06;
 
 import java.util.ArrayList;
 
-public class MyHashSet {
+public class mainHashSet {
     private ArrayList<Integer> set;
 
-    public MyHashSet() {
+    public mainHashSet() {
         set = new ArrayList<>();
     }
 
@@ -25,7 +25,7 @@ public class MyHashSet {
     }
 
     public static void main(String[] args) {
-        MyHashSet mySet = new MyHashSet();
+        mainHashSet mySet = new mainHashSet();
         mySet.add(1);
         mySet.add(2);
         mySet.add(3);
@@ -35,4 +35,3 @@ public class MyHashSet {
         System.out.println(mySet.get(1));
     }
 }
-
