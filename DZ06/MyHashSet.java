@@ -31,8 +31,8 @@ public class MyHashSet {
         mySet.add(3);
         mySet.add(2);
 
-        System.out.println(mySet); // [1, 2, 3]
-        System.out.println(mySet.get(1)); // 2
+        System.out.println(mySet);
+        System.out.println(mySet.get(1));
     }
 }
 
